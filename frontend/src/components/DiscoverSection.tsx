@@ -182,10 +182,10 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
                   decoding="async"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-x-5 bottom-5 text-white">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-sky-200">Espace Bien-Être</span>
+                <div className="absolute inset-x-5 bottom-5 max-w-sm rounded-xl bg-white/90 px-4 py-3 text-neutral-900 shadow-lg backdrop-blur-sm">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-sky-700">Espace Bien-Être</span>
                   <h4 className="mt-1 text-lg font-serif font-bold">Piscine Intérieure</h4>
-                  <p className="mt-1 text-xs leading-relaxed text-white/85">
+                  <p className="mt-1 text-xs leading-relaxed text-neutral-700">
                     Un espace piscine privatif conçu pour la détente et le bien-être des résidents.
                   </p>
                 </div>
@@ -222,10 +222,10 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
                 className="absolute inset-0 h-full w-full object-cover animate-in fade-in duration-1000"
               />
               <div className="absolute left-5 top-5 text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-300 sm:left-8 sm:top-8">Galerie NOEMA</div>
-              <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 text-white sm:inset-x-8 sm:bottom-8">
-                <div>
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">{String(activeCommonArea + 1).padStart(2, '0')} / {String(commonAreaImages.length).padStart(2, '0')}</span>
-                  <h4 className="mt-2 text-2xl sm:text-3xl font-serif font-bold">{activeImage.label}</h4>
+              <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 sm:inset-x-8 sm:bottom-8">
+                <div className="rounded-xl bg-white/90 px-4 py-3 text-neutral-900 shadow-lg backdrop-blur-sm">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-600">{String(activeCommonArea + 1).padStart(2, '0')} / {String(commonAreaImages.length).padStart(2, '0')}</span>
+                  <h4 className="mt-1 text-2xl sm:text-3xl font-serif font-bold">{activeImage.label}</h4>
                 </div>
                 <div className="flex shrink-0 gap-2">
                   <button
@@ -263,7 +263,7 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
                     alt=""
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute inset-x-1 bottom-1 truncate px-1.5 py-1 text-left text-[10px] font-semibold text-white">{image.label}</span>
+                  <span className="absolute inset-x-1 bottom-1 truncate rounded bg-white/90 px-1.5 py-1 text-left text-[10px] font-semibold text-neutral-900 shadow-sm backdrop-blur-sm">{image.label}</span>
                 </button>
               ))}
             </div>
