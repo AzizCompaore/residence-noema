@@ -20,14 +20,62 @@ interface ApartmentsSectionProps {
   onSelectForSimulation: (apartment: Apartment) => void;
 }
 
+const fallbackApartments: Apartment[] = [
+  {
+    id: 'fallback-t2-noema',
+    ref: 'NOEMA-T2-ETC-01',
+    name: 'T2 étage courant',
+    type: 't2',
+    rooms_count: 2,
+    bedrooms_count: 1,
+    bathrooms_count: 1,
+    surface_sqm: 50.01,
+    balcony_surface_sqm: 0,
+    floor: 'Selon lot — étage à confirmer',
+    price_fcfa: 59000000,
+    price_launch_fcfa: 59000000,
+    price_structure_fcfa: 65000000,
+    price_closed_fcfa: 69000000,
+    status: 'available',
+    description: 'T2 de 50,01 m² comprenant séjour, cuisine, buanderie et chambre avec salle d’eau.',
+    key_features: ['Séjour + coin repas', 'Cuisine et buanderie', '1 chambre avec salle d’eau'],
+    photos: ['./images/Dossier T2/Rendus F2/Salon 1.webp'],
+    display_order: 1,
+    is_featured: true
+  },
+  {
+    id: 'fallback-t3-noema',
+    ref: 'NOEMA-T3-ETC-01',
+    name: 'T3 étage courant',
+    type: 't3',
+    rooms_count: 3,
+    bedrooms_count: 2,
+    bathrooms_count: 2,
+    surface_sqm: 100.1,
+    balcony_surface_sqm: 4.56,
+    floor: 'Selon lot — étage à confirmer',
+    price_fcfa: 109000000,
+    price_launch_fcfa: 109000000,
+    price_structure_fcfa: 115000000,
+    price_closed_fcfa: 129000000,
+    status: 'available',
+    description: 'T3 de 100,10 m² comprenant séjour, balcon, cuisine et deux chambres avec salle d’eau.',
+    key_features: ['Séjour + coin repas', 'Balcon de 4,56 m²', '2 chambres avec salle d’eau'],
+    photos: ['./images/Dossier T3/Rendus F3\'/Salon F3 modifié/Enscape_2026-06-26-03-04-29.webp'],
+    display_order: 2,
+    is_featured: true
+  }
+];
+
 export const ApartmentsSection: React.FC<ApartmentsSectionProps> = ({
   apartments,
   onSelectApartment,
   onSelectForSimulation
 }) => {
   const [selectedFilter, setSelectedFilter] = useState<'all' | ApartmentType>('all');
+  const availableApartments = apartments.length > 0 ? apartments : fallbackApartments;
 
-  const filteredApartments = apartments.filter(apt => {
+  const filteredApartments = availableApartments.filter(apt => {
     if (selectedFilter === 'all') return true;
     return apt.type === selectedFilter;
   });
@@ -70,7 +118,7 @@ export const ApartmentsSection: React.FC<ApartmentsSectionProps> = ({
                   : 'bg-white text-neutral-600 border border-neutral-200 hover:bg-neutral-50'
               }`}
             >
-              Tous les lots ({apartments.length})
+              Tous les lots ({availableApartments.length})
             </button>
 
             <button
