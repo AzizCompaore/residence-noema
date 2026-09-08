@@ -182,10 +182,10 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
                   decoding="async"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-x-5 bottom-5 max-w-sm rounded-xl bg-white/90 px-4 py-3 text-neutral-900 shadow-lg backdrop-blur-sm">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-sky-700">Espace Bien-Être</span>
-                  <h4 className="mt-1 text-lg font-serif font-bold">Piscine Intérieure</h4>
-                  <p className="mt-1 text-xs leading-relaxed text-neutral-700">
+                <div className="absolute inset-x-4 bottom-4 max-w-xs rounded-lg bg-black/45 px-3 py-2 text-white backdrop-blur-[2px]">
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-sky-200">Espace Bien-Être</span>
+                  <h4 className="mt-0.5 text-base font-serif font-bold">Piscine Intérieure</h4>
+                  <p className="mt-0.5 text-[11px] leading-snug text-white/90">
                     Un espace piscine privatif conçu pour la détente et le bien-être des résidents.
                   </p>
                 </div>
@@ -223,9 +223,9 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
               />
               <div className="absolute left-5 top-5 text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-300 sm:left-8 sm:top-8">Galerie NOEMA</div>
               <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 sm:inset-x-8 sm:bottom-8">
-                <div className="rounded-xl bg-white/90 px-4 py-3 text-neutral-900 shadow-lg backdrop-blur-sm">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-600">{String(activeCommonArea + 1).padStart(2, '0')} / {String(commonAreaImages.length).padStart(2, '0')}</span>
-                  <h4 className="mt-1 text-2xl sm:text-3xl font-serif font-bold">{activeImage.label}</h4>
+                <div className="rounded-lg bg-black/40 px-3 py-2 text-white backdrop-blur-[2px]">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">{String(activeCommonArea + 1).padStart(2, '0')} / {String(commonAreaImages.length).padStart(2, '0')}</span>
+                  <h4 className="mt-0.5 text-xl sm:text-2xl font-serif font-bold">{activeImage.label}</h4>
                 </div>
                 <div className="flex shrink-0 gap-2">
                   <button
@@ -263,7 +263,7 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
                     alt=""
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute inset-x-1 bottom-1 truncate rounded bg-white/90 px-1.5 py-1 text-left text-[10px] font-semibold text-neutral-900 shadow-sm backdrop-blur-sm">{image.label}</span>
+                  <span className="absolute inset-x-1 bottom-1 truncate bg-black/45 px-1.5 py-1 text-left text-[10px] font-semibold text-white drop-shadow-sm">{image.label}</span>
                 </button>
               ))}
             </div>
