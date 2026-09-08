@@ -1,6 +1,4 @@
 
-<<<<<<< HEAD
-=======
 # Run and deploy your AI Studio app
 
 ## Version publique
@@ -33,4 +31,3 @@ View your app in AI Studio: https://ai.studio/apps/be8ee41d-996e-42f3-b921-376e1
 4. Vérifiez que `FRONTEND_URL="http://localhost:3000"`, puis démarrez Django sur le port `8000` et l’application avec `npm run dev`.
 
 En production, remplacez l’URL de callback par l’URL publique HTTPS correspondante et utilisez les mêmes valeurs dans `GOOGLE_REDIRECT_URI` et Google Cloud Console.
->>>>>>> f3978ca (Deploy frontend to GitHub Pages)
