@@ -29,6 +29,47 @@ interface SimulatorModalProps {
   whatsappNumber?: string;
 }
 
+const fallbackApartments: Apartment[] = [
+  {
+    id: 'fallback-t2-noema',
+    ref: 'NOEMA-T2-ETC-01',
+    name: 'T2 étage courant',
+    type: 't2',
+    rooms_count: 2,
+    bedrooms_count: 1,
+    bathrooms_count: 1,
+    surface_sqm: 50.01,
+    balcony_surface_sqm: 0,
+    floor: 'Selon lot — étage à confirmer',
+    price_fcfa: 59000000,
+    status: 'available',
+    description: 'T2 de 50,01 m² avec séjour, cuisine, buanderie et chambre avec salle d’eau.',
+    key_features: ['Séjour + coin repas', 'Cuisine et buanderie', '1 chambre avec salle d’eau'],
+    photos: [],
+    display_order: 1,
+    is_featured: true
+  },
+  {
+    id: 'fallback-t3-noema',
+    ref: 'NOEMA-T3-ETC-01',
+    name: 'T3 étage courant',
+    type: 't3',
+    rooms_count: 3,
+    bedrooms_count: 2,
+    bathrooms_count: 2,
+    surface_sqm: 100.1,
+    balcony_surface_sqm: 4.56,
+    floor: 'Selon lot — étage à confirmer',
+    price_fcfa: 109000000,
+    status: 'available',
+    description: 'T3 de 100,10 m² avec séjour, balcon, cuisine et deux chambres avec salle d’eau.',
+    key_features: ['Séjour + coin repas', 'Balcon de 4,56 m²', '2 chambres avec salle d’eau'],
+    photos: [],
+    display_order: 2,
+    is_featured: true
+  }
+];
+
 export const SimulatorModal: React.FC<SimulatorModalProps> = ({
   isOpen,
   onClose,
@@ -37,27 +78,11 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
   onSelectApartment,
   whatsappNumber = '+2250789001122'
 }) => {
+  const availableApartments = allApartments.length > 0 ? allApartments : fallbackApartments;
+
   // Active Apartment Context
   const [currentApartment, setCurrentApartment] = useState<Apartment>(
-    selectedApartment || allApartments[0] || {
-      id: 'apt-default',
-      ref: 'NOEMA-T2-01',
-      name: 'T2 étage courant',
-      type: 't2',
-      rooms_count: 2,
-      bedrooms_count: 1,
-      bathrooms_count: 1,
-      surface_sqm: 50.01,
-      balcony_surface_sqm: 0,
-      floor: 'Selon lot — étage à confirmer',
-      price_fcfa: 59000000,
-      status: 'available',
-      description: '',
-      key_features: [],
-      photos: [],
-      display_order: 1,
-      is_featured: true
-    }
+    selectedApartment || availableApartments[0]
   );
 
   // Progressive Step State: 1 to 7, then 8 is Result & Lead Form, 9 is Success
@@ -147,10 +172,11 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
       setNeedsApartmentSelection(false);
       setStep(1);
     } else {
+      setCurrentApartment(availableApartments[0]);
       setNeedsApartmentSelection(true);
       setStep(0);
     }
-  }, [isOpen, selectedApartment]);
+  }, [isOpen, selectedApartment, availableApartments]);
 
   // Trigger simulation calculation whenever financial parameters update
   useEffect(() => {
@@ -516,7 +542,7 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
                     <p className="text-sm text-neutral-500">Sélectionnez un appartement afin de calculer une estimation adaptée à son prix.</p>
                   </div>
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    {allApartments.map((apartment) => (
+                    {availableApartments.map((apartment) => (
                       <button
                         key={apartment.id}
                         type="button"
