@@ -38,7 +38,7 @@ const fallbackApartments: Apartment[] = [
     price_closed_fcfa: 69000000,
     status: 'available',
     description: 'T2 de 50,01 m² comprenant séjour, cuisine, buanderie et chambre avec salle d’eau.',
-    key_features: ['Séjour + coin repas', 'Cuisine et buanderie', '1 chambre avec salle d’eau'],
+    key_features: ['Séjour + coin repas', 'Cuisine et buanderie', '1 chambre avec salle d’eau', 'Aucun balcon'],
     photos: [
       './images/Dossier T2/Rendus F2/Salon 1.webp',
       './images/Dossier T2/Rendus F2/Salon 2.webp',
@@ -65,7 +65,7 @@ const fallbackApartments: Apartment[] = [
     price_closed_fcfa: 129000000,
     status: 'available',
     description: 'T3 de 100,10 m² comprenant séjour, balcon, cuisine et deux chambres avec salle d’eau.',
-    key_features: ['Séjour + coin repas', 'Balcon de 4,56 m²', '2 chambres avec salle d’eau'],
+    key_features: ['Séjour + coin repas', 'Balcon de 4,56 m²', 'Cuisine et buanderie', '2 chambres avec salle d’eau'],
     photos: [
       './images/Dossier T3/Rendus F3\'/Salon 1 F3\'.webp',
       './images/Dossier T3/Rendus F3\'/Salon 2 F3\'.webp',

@@ -63,6 +63,12 @@ export const ApartmentDetailModal: React.FC<ApartmentDetailModalProps> = ({
         './images/Dossier T2/Rendus F2/Chambre 1.webp'
       ];
   const photos = apartment.photos && apartment.photos.length > 0 ? apartment.photos : fallbackPhotos;
+  const fallbackFeatures = apartment.type === 't3'
+    ? ['Séjour + coin repas', 'Balcon de 4,56 m²', 'Cuisine et buanderie', '2 chambres avec salle d’eau']
+    : ['Séjour + coin repas', 'Cuisine et buanderie', '1 chambre avec salle d’eau', 'Aucun balcon'];
+  const features = apartment.key_features && apartment.key_features.length > 0
+    ? apartment.key_features
+    : fallbackFeatures;
 
   const statusLabels: Record<string, { label: string; bg: string; text: string; border: string }> = {
     available: { label: 'Disponible', bg: 'bg-emerald-50', text: 'text-emerald-800', border: 'border-emerald-300' },
@@ -247,11 +253,11 @@ export const ApartmentDetailModal: React.FC<ApartmentDetailModalProps> = ({
           )}
 
           {/* Key Features List */}
-          {apartment.key_features && apartment.key_features.length > 0 && (
+          {features.length > 0 && (
             <div className="space-y-3">
               <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-900">Prestations & Équipements inclus</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {apartment.key_features.map((feat, i) => (
+                {features.map((feat, i) => (
                   <div key={i} className="flex items-start gap-2.5 text-sm text-neutral-700 bg-neutral-50/70 p-2.5 rounded-lg border border-neutral-100">
                     <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                     <span>{feat}</span>
