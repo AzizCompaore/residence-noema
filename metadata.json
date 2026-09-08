@@ -1,0 +1,6 @@
+{
+  "name": "Résidence NOEMA — Angré Djorogobité, Abidjan",
+  "description": "Site commercial officiel et tunnel de vente pour la Résidence NOEMA à Angré Djorogobité, Abidjan par Uriel Group / ImmoDiaspo. Découvrez les appartements disponibles, simulez votre financement et contactez un conseiller.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
