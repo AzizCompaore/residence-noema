@@ -101,7 +101,7 @@ export const ApartmentsSection: React.FC<ApartmentsSectionProps> = ({
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
           {filteredApartments.map((apartment) => {
             const status = statusConfig[apartment.status] || statusConfig.available;
-            const heroPhoto = apartment.photos?.[0] || '/images/Dossier T2/Rendus F2/Salon 1.png';
+            const heroPhoto = apartment.photos?.[0] || '/images/Dossier T2/Rendus F2/Salon 1.webp';
 
             return (
               <div

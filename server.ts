@@ -79,7 +79,7 @@ let residenceData: ResidenceInfo = {
   floors: 'R+7 avec parking sécurisé au rez-de-chaussée',
   delivery_date_estimated: '30 mois',
   status: 'Chantier en cours — Structure & Gros Œuvre',
-  hero_image: '/images/noema%20façade.png',
+  hero_image: '/images/noema%20façade.webp',
   whatsapp_number: '+2250789001122',
   phone_number: '+225 27 22 00 11 22',
   email_contact: 'contact@laresidencenoema.com',
@@ -117,11 +117,11 @@ let apartmentsData: Apartment[] = [
     ],
     composition: ['Séjour + coin repas', 'Cuisine', 'Buanderie', 'Dégagement', 'Toilette', '1 chambre', '1 salle d’eau chambre'],
     photos: [
-      '/images/Dossier T2/Rendus salon F2 modifié/Salon 1.png',
-      '/images/Dossier T2/Rendus F2/Chambre 1.png',
-      '/images/Dossier T2/Rendus F2/Cuisine 1.png',
-      '/images/Dossier T2/Rendus F2/Douche.png',
-      '/images/Dossier T2/Rendus F2/Entrée.png'
+      '/images/Dossier T2/Rendus salon F2 modifié/Salon 1.webp',
+      '/images/Dossier T2/Rendus F2/Chambre 1.webp',
+      '/images/Dossier T2/Rendus F2/Cuisine 1.webp',
+      '/images/Dossier T2/Rendus F2/Douche.webp',
+      '/images/Dossier T2/Rendus F2/Entrée.webp'
     ],
     display_order: 1,
     is_featured: true
@@ -148,11 +148,11 @@ let apartmentsData: Apartment[] = [
     ],
     composition: ['Séjour + coin repas', 'Balcon', 'Cuisine', 'Buanderie', 'Dégagement', 'Toilette', '2 chambres avec salle d’eau chacune'],
     photos: [
-      '/images/Dossier T3/Salon F3 modifié/Salon 1.png',
-      "/images/Dossier T3/Rendus F3'/Chambre Master 1 F3'.png",
-      "/images/Dossier T3/Rendus F3'/Cuisine 1.png",
-      "/images/Dossier T3/Rendus F3'/Douche Suite Master 1 F3'.png",
-      '/images/Dossier T3/Salon F3 modifié/Couloir d’entrée.png'
+      '/images/Dossier T3/Salon F3 modifié/Salon 1.webp',
+      "/images/Dossier T3/Rendus F3'/Chambre Master 1 F3'.webp",
+      "/images/Dossier T3/Rendus F3'/Cuisine 1.webp",
+      "/images/Dossier T3/Rendus F3'/Douche Suite Master 1 F3'.webp",
+      '/images/Dossier T3/Salon F3 modifié/Couloir d’entrée.webp'
     ],
     display_order: 2,
     is_featured: true
@@ -178,7 +178,7 @@ let constructionMilestones: ConstructionMilestone[] = [
     status: 'in_progress',
     progress_percent: 75,
     date_display: 'En cours — 2025',
-    photo: '/images/noema-construction.jpg',
+    photo: '/images/noema-construction.webp',
     is_3d_render: false
   },
   {

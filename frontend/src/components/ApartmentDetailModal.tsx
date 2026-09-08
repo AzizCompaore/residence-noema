@@ -51,7 +51,7 @@ export const ApartmentDetailModal: React.FC<ApartmentDetailModalProps> = ({
 
   const photos = apartment.photos && apartment.photos.length > 0 
     ? apartment.photos 
-    : ['/images/Dossier T2/Rendus F2/Salon 1.png', '/images/Dossier T2/Rendus F2/Chambre 1.png'];
+    : ['/images/Dossier T2/Rendus F2/Salon 1.webp', '/images/Dossier T2/Rendus F2/Chambre 1.webp'];
 
   const statusLabels: Record<string, { label: string; bg: string; text: string; border: string }> = {
     available: { label: 'Disponible', bg: 'bg-emerald-50', text: 'text-emerald-800', border: 'border-emerald-300' },

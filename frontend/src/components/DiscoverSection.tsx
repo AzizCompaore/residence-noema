@@ -20,14 +20,14 @@ interface DiscoverSectionProps {
 }
 
 const commonAreaImages = [
-  { file: 'Hall.png', label: "Hall d'entrée" },
-  { file: 'Hall 180cm.png', label: "Vue du hall" },
-  { file: 'Hall 180cm (2).png', label: "Hall et circulation" },
-  { file: 'Hall boîte aux lettres.png', label: 'Boîtes aux lettres' },
-  { file: 'Hall escalier.png', label: 'Escalier du hall' },
-  { file: 'Vue ascenseur hall.png', label: 'Ascenseur et hall' },
-  { file: 'Piscine.png', label: 'Piscine' },
-  { file: 'vue du parking.png', label: 'Vue du parking' }
+  { file: 'Hall.webp', label: "Hall d'entrée" },
+  { file: 'Hall 180cm.webp', label: "Vue du hall" },
+  { file: 'Hall 180cm (2).webp', label: "Hall et circulation" },
+  { file: 'Hall boîte aux lettres.webp', label: 'Boîtes aux lettres' },
+  { file: 'Hall escalier.webp', label: 'Escalier du hall' },
+  { file: 'Vue ascenseur hall.webp', label: 'Ascenseur et hall' },
+  { file: 'Piscine.webp', label: 'Piscine' },
+  { file: 'vue du parking.webp', label: 'Vue du parking' }
 ];
 
 export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) => {
@@ -137,7 +137,7 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
             <div className="overflow-hidden rounded-2xl border border-neutral-200/80 bg-neutral-100">
               <div className="relative h-64 overflow-hidden sm:h-72 group">
                 <img
-                  src="/images/Dossier Hall piscine et parking/Hall 180cm.png"
+                  src="/images/Dossier Hall piscine et parking/Hall 180cm.webp"
                   alt="Hall d'entrée de la Résidence NOEMA"
                   referrerPolicy="no-referrer"
                   loading="lazy"
@@ -176,7 +176,7 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
 
               <div className="relative min-h-52 overflow-hidden rounded-xl border border-neutral-200/80 sm:col-span-2 group">
                 <img
-                  src="/images/Dossier Hall piscine et parking/Piscine.png"
+                  src="/images/Dossier Hall piscine et parking/Piscine.webp"
                   alt="Piscine intérieure de la Résidence NOEMA"
                   loading="lazy"
                   decoding="async"
