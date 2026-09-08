@@ -137,7 +137,7 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
             <div className="overflow-hidden rounded-2xl border border-neutral-200/80 bg-neutral-100">
               <div className="relative h-64 overflow-hidden sm:h-72 group">
                 <img
-                  src="/images/Dossier Hall piscine et parking/Hall 180cm.webp"
+                  src="./images/Dossier Hall piscine et parking/Hall 180cm.webp"
                   alt="Hall d'entrée de la Résidence NOEMA"
                   referrerPolicy="no-referrer"
                   loading="lazy"
@@ -176,7 +176,7 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
 
               <div className="relative min-h-52 overflow-hidden rounded-xl border border-neutral-200/80 sm:col-span-2 group">
                 <img
-                  src="/images/Dossier Hall piscine et parking/Piscine.webp"
+                  src="./images/Dossier Hall piscine et parking/Piscine.webp"
                   alt="Piscine intérieure de la Résidence NOEMA"
                   loading="lazy"
                   decoding="async"
@@ -215,7 +215,7 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
             <div className="relative min-h-[380px] sm:min-h-[520px] overflow-hidden rounded-xl bg-neutral-900">
               <img
                 key={activeImage.file}
-                src={`/images/Dossier Hall piscine et parking/${activeImage.file}`}
+                src={`./images/Dossier Hall piscine et parking/${activeImage.file}`}
                 alt={`${activeImage.label} de la Résidence NOEMA`}
                 loading="lazy"
                 decoding="async"
@@ -259,7 +259,7 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
                   className={`group relative aspect-[4/3] overflow-hidden rounded-lg border-2 bg-neutral-100 transition-all duration-300 ${activeCommonArea === index ? 'border-emerald-600 shadow-lg opacity-100' : 'border-transparent opacity-70 hover:border-neutral-300 hover:opacity-100'}`}
                 >
                   <img
-                    src={`/images/Dossier Hall piscine et parking/${image.file}`}
+                    src={`./images/Dossier Hall piscine et parking/${image.file}`}
                     alt=""
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />

@@ -33,7 +33,7 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="relative mb-14 grid overflow-hidden rounded-[2rem] border border-white/70 bg-[#fffdf9] text-neutral-900 shadow-[0_24px_70px_rgba(38,77,59,0.12)] lg:grid-cols-[1.1fr_0.9fr]">
           <div className="relative min-h-[280px] overflow-hidden sm:min-h-[360px]">
             <img
-              src="/images/famille souriante.webp"
+              src="./images/famille souriante.webp"
               alt="Famille souriante dans son intérieur"
               loading="lazy"
               decoding="async"

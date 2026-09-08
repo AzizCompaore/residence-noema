@@ -26,7 +26,7 @@ export const StoryVideoSection: React.FC = () => {
         {/* Cinematic Video Teaser Box */}
         <div className="max-w-4xl mx-auto relative rounded-3xl overflow-hidden bg-neutral-900 aspect-16/9 shadow-2xl border border-neutral-200 group">
           <img
-            src="/images/Dossier T3/Salon F3 modifié/Enscape_2026-06-26-03-04-29.webp"
+            src="./images/Dossier T3/Salon F3 modifié/Enscape_2026-06-26-03-04-29.webp"
             alt="Intérieur raffiné Résidence NOEMA"
             referrerPolicy="no-referrer"
             loading="lazy"

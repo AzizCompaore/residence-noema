@@ -143,7 +143,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <div className="relative rounded-xl overflow-hidden bg-neutral-100 aspect-3/4 max-h-[580px]">
                   <img
                     id="hero-facade-image"
-                    src="/images/noema%20façade.webp"
+                    src="./images/noema%20façade.webp"
                     alt="Façade de la Résidence NOEMA à Angré Djorogobité, Abidjan"
                     referrerPolicy="no-referrer"
                     loading="eager"

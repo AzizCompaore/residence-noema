@@ -25,7 +25,7 @@ export const UrielGroupTransitionPage: React.FC<UrielGroupTransitionPageProps> =
     <header className="border-b border-neutral-900/10 bg-white/90 px-5 py-4 backdrop-blur-md sm:px-8">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <img src="/images/Logo Uriel Groupe.webp" alt="Uriel Group" loading="lazy" decoding="async" className="h-11 w-11 rounded-full object-cover" />
+          <img src="./images/Logo Uriel Groupe.webp" alt="Uriel Group" loading="lazy" decoding="async" className="h-11 w-11 rounded-full object-cover" />
           <div><span className="block text-sm font-bold tracking-[0.2em] text-neutral-950">URIEL GROUP</span><span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-500">Investir · Bâtir · Pérenniser</span></div>
         </div>
         <button onClick={onBackToNoema} className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-3.5 py-2.5 text-xs font-bold text-neutral-700 transition-all hover:border-emerald-700 hover:text-emerald-800"><ArrowLeft className="h-3.5 w-3.5" /> <span className="hidden sm:inline">Retour à </span>NOEMA</button>
