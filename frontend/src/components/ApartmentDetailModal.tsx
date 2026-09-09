@@ -33,6 +33,19 @@ export const ApartmentDetailModal: React.FC<ApartmentDetailModalProps> = ({
 }) => {
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
   const [isDoorOpen, setIsDoorOpen] = useState(false);
+  const isSmallPhone = typeof window !== 'undefined' && window.innerWidth < 640;
+
+  const leftDoorTransform = isDoorOpen
+    ? isSmallPhone
+      ? 'perspective(1600px) rotateY(-82deg) scaleY(0.84)'
+      : 'perspective(1600px) rotateY(-108deg)'
+    : 'perspective(1600px) rotateY(0deg)';
+
+  const rightDoorTransform = isDoorOpen
+    ? isSmallPhone
+      ? 'perspective(1600px) rotateY(82deg) scaleY(0.84)'
+      : 'perspective(1600px) rotateY(108deg)'
+    : 'perspective(1600px) rotateY(0deg)';
 
   useEffect(() => {
     if (!apartment) {
@@ -102,7 +115,7 @@ export const ApartmentDetailModal: React.FC<ApartmentDetailModalProps> = ({
             className="relative w-1/2 h-full border-r border-amber-300/80 bg-[linear-gradient(125deg,#ffffff_0%,#f3eee5_52%,#ded6c9_100%)] shadow-[inset_-16px_0_26px_rgba(91,75,55,0.28)] transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
             style={{
               transformOrigin: 'left center',
-              transform: isDoorOpen ? 'perspective(1600px) rotateY(-108deg)' : 'perspective(1600px) rotateY(0deg)',
+              transform: leftDoorTransform,
             }}
           >
             <div className="absolute inset-3 border border-amber-300/90 shadow-[inset_0_0_0_3px_rgba(255,255,255,0.7)]" />
@@ -115,7 +128,7 @@ export const ApartmentDetailModal: React.FC<ApartmentDetailModalProps> = ({
             className="relative w-1/2 h-full border-l border-amber-300/80 bg-[linear-gradient(235deg,#ffffff_0%,#f3eee5_52%,#ded6c9_100%)] shadow-[inset_16px_0_26px_rgba(91,75,55,0.28)] transition-transform duration-900 ease-[cubic-bezier(0.22,1,0.36,1)]"
             style={{
               transformOrigin: 'right center',
-              transform: isDoorOpen ? 'perspective(1600px) rotateY(108deg)' : 'perspective(1600px) rotateY(0deg)',
+              transform: rightDoorTransform,
             }}
           >
             <div className="absolute inset-3 border border-amber-300/90 shadow-[inset_0_0_0_3px_rgba(255,255,255,0.7)]" />

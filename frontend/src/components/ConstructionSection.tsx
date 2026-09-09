@@ -16,7 +16,62 @@ interface ConstructionSectionProps {
   milestones: ConstructionMilestone[];
 }
 
+const fallbackMilestones: ConstructionMilestone[] = [
+  {
+    id: 'ms-01',
+    stage_number: 1,
+    title: 'Obtention du titre foncier et validation du projet',
+    description: 'Le dossier de construction est consolidé avec le foncier, les autorisations et le cadrage du programme.',
+    status: 'completed',
+    progress_percent: 100,
+    date_display: '2025 — Q1',
+    is_3d_render: false,
+  },
+  {
+    id: 'ms-02',
+    stage_number: 2,
+    title: 'Lancement des fondations et élévation du socle',
+    description: 'Les travaux de terrassement, fondations et travaux de structure sont lancés sur le site.',
+    status: 'completed',
+    progress_percent: 100,
+    date_display: '2025 — Q2',
+    is_3d_render: false,
+  },
+  {
+    id: 'ms-03',
+    stage_number: 3,
+    title: 'R+7 en cours d’élévation',
+    description: 'La structure principale est élevée progressivement avec les étages, les planchers et les éléments de sécurité.',
+    status: 'in_progress',
+    progress_percent: 72,
+    date_display: '2025 — Q3',
+    is_3d_render: false,
+  },
+  {
+    id: 'ms-04',
+    stage_number: 4,
+    title: 'Finitions intérieures et aménagements',
+    description: 'Les espaces communs, la finition des logements, les équipements et les audits de qualité sont engagés.',
+    status: 'upcoming',
+    progress_percent: 28,
+    date_display: '2026 — Q1',
+    is_3d_render: false,
+  },
+  {
+    id: 'ms-05',
+    stage_number: 5,
+    title: 'Livraison, clés et mise en service',
+    description: 'La résidence est livrée aux acquéreurs avec la remise des clés et le suivi de la mise en service.',
+    status: 'upcoming',
+    progress_percent: 8,
+    date_display: '2026 — Q2',
+    is_3d_render: false,
+  }
+];
+
 export const ConstructionSection: React.FC<ConstructionSectionProps> = ({ milestones }) => {
+  const timelineMilestones = milestones.length > 0 ? milestones : fallbackMilestones;
+
   return (
     <section id="chantier" className="py-20 lg:py-28 bg-[#FAFAFA] border-t border-neutral-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -100,7 +155,7 @@ export const ConstructionSection: React.FC<ConstructionSectionProps> = ({ milest
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {milestones.map((m) => {
+            {timelineMilestones.map((m) => {
               const isDone = m.status === 'completed';
               const isInProgress = m.status === 'in_progress';
 
