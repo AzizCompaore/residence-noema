@@ -116,7 +116,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <span className="text-xs text-neutral-600 font-medium">Livraison Prévisionnelle</span>
                 <span className="text-sm font-bold text-neutral-900 flex items-center gap-1">
                   <Calendar className="w-3.5 h-3.5 text-neutral-600" />
-                  {residence?.delivery_date_estimated || '30 mois'}
+                  {residence?.delivery_date_estimated || '2029-02-09'}
                 </span>
               </div>
 

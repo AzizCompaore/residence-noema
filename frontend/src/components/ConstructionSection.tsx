@@ -24,7 +24,7 @@ const fallbackMilestones: ConstructionMilestone[] = [
     description: 'Le dossier de construction est consolidé avec le foncier, les autorisations et le cadrage du programme.',
     status: 'completed',
     progress_percent: 100,
-    date_display: '2025 — Q1',
+    date_display: '2026 — Q1',
     is_3d_render: false,
   },
   {
@@ -34,7 +34,7 @@ const fallbackMilestones: ConstructionMilestone[] = [
     description: 'Le chantier est actuellement à la phase de lancement des fondations et d’élévation du socle.',
     status: 'in_progress',
     progress_percent: 58,
-    date_display: '2025 — Q2',
+    date_display: '2026 — Q2',
     is_3d_render: false,
   },
   {
@@ -43,8 +43,8 @@ const fallbackMilestones: ConstructionMilestone[] = [
     title: 'R+7 en cours d’élévation',
     description: 'La structure principale est élevée progressivement avec les étages, les planchers et les éléments de sécurité.',
     status: 'upcoming',
-    progress_percent: 10,
-    date_display: '2025 — Q3',
+    progress_percent: 0,
+    date_display: '2026 — Q3',
     is_3d_render: false,
   },
   {
@@ -53,8 +53,8 @@ const fallbackMilestones: ConstructionMilestone[] = [
     title: 'Finitions intérieures et aménagements',
     description: 'Les espaces communs, la finition des logements, les équipements et les audits de qualité sont engagés.',
     status: 'upcoming',
-    progress_percent: 28,
-    date_display: '2026 — Q1',
+    progress_percent: 0,
+    date_display: '2026 — Q4',
     is_3d_render: false,
   },
   {
@@ -63,8 +63,8 @@ const fallbackMilestones: ConstructionMilestone[] = [
     title: 'Livraison, clés et mise en service',
     description: 'La résidence est livrée aux acquéreurs avec la remise des clés et le suivi de la mise en service.',
     status: 'upcoming',
-    progress_percent: 8,
-    date_display: '2026 — Q2',
+    progress_percent: 0,
+    date_display: '2029 — Q1',
     is_3d_render: false,
   }
 ];
@@ -110,7 +110,7 @@ export const ConstructionSection: React.FC<ConstructionSectionProps> = ({ milest
             {/* Real photo badge */}
             <div className="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-md flex items-center gap-1.5">
               <Camera className="w-3.5 h-3.5" />
-              <span>Photo Réelle de Chantier • 2025</span>
+              <span>Photo Réelle de Chantier • 2026</span>
             </div>
 
             <div className="absolute bottom-4 left-4 right-4 text-white">

@@ -10,7 +10,7 @@ class Residence(models.Model):
     architectural_concept = models.TextField(verbose_name="Concept architectural")
     total_units = models.PositiveIntegerField(default=30, verbose_name="Nombre total de logements")
     floors = models.CharField(max_length=50, default="R+7", verbose_name="Niveaux / Étages")
-    delivery_date_estimated = models.CharField(max_length=100, default="30 mois", verbose_name="Livraison prévisionnelle")
+    delivery_date_estimated = models.CharField(max_length=100, default="2029-02-09", verbose_name="Livraison prévisionnelle")
     status = models.CharField(max_length=100, default="Chantier en cours", verbose_name="Statut du programme")
     hero_image = models.ImageField(upload_to='residences/', null=True, blank=True, verbose_name="Photo principale de la résidence")
     whatsapp_number = models.CharField(max_length=50, default="+2250789001122", verbose_name="Numéro WhatsApp commercial")

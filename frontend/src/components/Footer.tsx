@@ -147,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({
             </button>
 
             <div className="space-y-1 text-[11px] text-neutral-500">
-              <p>Livraison : {residence?.delivery_date_estimated || '30 mois'}</p>
+              <p>Livraison : {residence?.delivery_date_estimated || '2029-02-09'}</p>
               <p>Régime : VEFA notariée</p>
             </div>
           </div>

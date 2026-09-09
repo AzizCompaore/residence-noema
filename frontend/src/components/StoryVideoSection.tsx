@@ -85,7 +85,7 @@ export const StoryVideoSection: React.FC = () => {
                     </p>
                   </div>
                   <span className="text-xs font-semibold px-3 py-1 bg-emerald-950 text-emerald-300 border border-emerald-800/80 rounded-full">
-                    Diffusion officielle T4 2025
+                    Diffusion officielle T4 2026
                   </span>
                 </div>
               </div>

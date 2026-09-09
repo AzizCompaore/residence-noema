@@ -119,9 +119,8 @@ export const DiscoverSection: React.FC<DiscoverSectionProps> = ({ residence }) =
             <div className="pt-6 border-t border-neutral-200/80 flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-neutral-500" />
-                <span className="text-xs font-semibold text-neutral-800">Livraison prévisionnelle : {residence?.delivery_date_estimated || '30 mois'}</span>
+                <span className="text-xs font-semibold text-neutral-800">Livraison prévisionnelle : {residence?.delivery_date_estimated || '2029-02-09'}</span>
               </div>
-
               <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200/60">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 Chantier en cours actif
