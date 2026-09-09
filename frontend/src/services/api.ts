@@ -87,10 +87,169 @@ export async function startGoogleLogin(): Promise<void> {
   window.location.assign(payload.url);
 }
 
+const fallbackResidence: ResidenceInfo = {
+  id: 'residence-noema',
+  name: 'Résidence NOEMA',
+  tagline: 'Vivre Angré Djorogobité',
+  city: 'Abidjan',
+  district: 'Angré Djorogobité',
+  country: 'Côte d’Ivoire',
+  description: 'Une résidence résidentielle de qualité, pensée pour la diaspora, la famille et les investisseurs.',
+  architectural_concept: 'Une résidence moderne, sécurisée et connectée à la vie d’Angré Djorogobité.',
+  total_units: 80,
+  floors: 'R+7',
+  delivery_date_estimated: '2026',
+  status: 'En construction',
+  hero_image: './images/noema-construction.webp',
+  whatsapp_number: '+2250789001122',
+  phone_number: '+2250789001122',
+  email_contact: 'contact@noema.ci',
+  financing_partners: 'Diaspora Immo',
+  financing_notes: 'Financement adapté au projet immobilier.',
+  indicative_interest_rate: 7.5,
+  indicative_debt_ratio_limit: 33,
+  address_details: 'Angré Djorogobité, Abidjan',
+  gps_coordinates: { lat: 5.347, lng: -4.016 }
+};
+
+const fallbackApartments: Apartment[] = [
+  {
+    id: 'fallback-t2-noema',
+    ref: 'NOEMA-T2-ETC-01',
+    name: 'T2 étage courant',
+    type: 't2',
+    rooms_count: 2,
+    bedrooms_count: 1,
+    bathrooms_count: 1,
+    surface_sqm: 50.01,
+    balcony_surface_sqm: 0,
+    floor: 'Selon lot — étage à confirmer',
+    price_fcfa: 59000000,
+    price_launch_fcfa: 59000000,
+    price_structure_fcfa: 65000000,
+    price_closed_fcfa: 69000000,
+    status: 'available',
+    description: 'T2 de 50,01 m² comprenant séjour, cuisine, buanderie et chambre avec salle d’eau.',
+    key_features: ['Séjour + coin repas', 'Cuisine et buanderie', '1 chambre avec salle d’eau', 'Aucun balcon'],
+    photos: [
+      './images/Dossier T2/Rendus F2/Salon 1.webp',
+      './images/Dossier T2/Rendus F2/Salon 2.webp',
+      './images/Dossier T2/Rendus F2/Cuisine 1.webp',
+      './images/Dossier T2/Rendus F2/Chambre 1.webp'
+    ],
+    display_order: 1,
+    is_featured: true
+  },
+  {
+    id: 'fallback-t3-noema',
+    ref: 'NOEMA-T3-ETC-01',
+    name: 'T3 étage courant',
+    type: 't3',
+    rooms_count: 3,
+    bedrooms_count: 2,
+    bathrooms_count: 2,
+    surface_sqm: 100.1,
+    balcony_surface_sqm: 4.56,
+    floor: 'Selon lot — étage à confirmer',
+    price_fcfa: 109000000,
+    price_launch_fcfa: 109000000,
+    price_structure_fcfa: 115000000,
+    price_closed_fcfa: 129000000,
+    status: 'available',
+    description: 'T3 de 100,10 m² comprenant séjour, balcon, cuisine et deux chambres avec salle d’eau.',
+    key_features: ['Séjour + coin repas', 'Balcon de 4,56 m²', 'Cuisine et buanderie', '2 chambres avec salle d’eau'],
+    photos: [
+      './images/Dossier T3/Rendus F3\'/Salon 1 F3\'.webp',
+      './images/Dossier T3/Rendus F3\'/Salon 2 F3\'.webp',
+      './images/Dossier T3/Rendus F3\'/Cuisine 1.webp',
+      './images/Dossier T3/Rendus F3\'/Chambre Master 1 F3\'.webp'
+    ],
+    display_order: 2,
+    is_featured: true
+  }
+];
+
+const fallbackMilestones: ConstructionMilestone[] = [
+  {
+    id: 'ms-01',
+    stage_number: 1,
+    title: 'Obtention du titre foncier et validation du projet',
+    description: 'Le dossier de construction est consolidé avec le foncier, les autorisations et le cadrage du programme.',
+    status: 'completed',
+    progress_percent: 100,
+    date_display: '2025 — Q1',
+    is_3d_render: false,
+  },
+  {
+    id: 'ms-02',
+    stage_number: 2,
+    title: 'Lancement des fondations et élévation du socle',
+    description: 'Les travaux de terrassement, fondations et travaux de structure sont lancés sur le site.',
+    status: 'completed',
+    progress_percent: 100,
+    date_display: '2025 — Q2',
+    is_3d_render: false,
+  },
+  {
+    id: 'ms-03',
+    stage_number: 3,
+    title: 'R+7 en cours d’élévation',
+    description: 'La structure principale est élevée progressivement avec les étages, les planchers et les éléments de sécurité.',
+    status: 'in_progress',
+    progress_percent: 72,
+    date_display: '2025 — Q3',
+    is_3d_render: false,
+  },
+  {
+    id: 'ms-04',
+    stage_number: 4,
+    title: 'Finitions intérieures et aménagements',
+    description: 'Les espaces communs, la finition des logements, les équipements et les audits de qualité sont engagés.',
+    status: 'upcoming',
+    progress_percent: 28,
+    date_display: '2026 — Q1',
+    is_3d_render: false,
+  },
+  {
+    id: 'ms-05',
+    stage_number: 5,
+    title: 'Livraison, clés et mise en service',
+    description: 'La résidence est livrée aux acquéreurs avec la remise des clés et le suivi de la mise en service.',
+    status: 'upcoming',
+    progress_percent: 8,
+    date_display: '2026 — Q2',
+    is_3d_render: false,
+  }
+];
+
+const fallbackFaqs: FAQItem[] = [
+  {
+    id: 'faq-01',
+    category: 'projet',
+    question: 'Où se situe la résidence NOEMA ?',
+    answer: 'La résidence NOEMA se trouve à Angré Djorogobité, commune de la ville d’Abidjan.',
+    display_order: 1,
+    is_published: true
+  },
+  {
+    id: 'faq-02',
+    category: 'chantier',
+    question: 'Quel est le niveau d’avancement du chantier ?',
+    answer: 'La structure est en phase d’élévation avec les lots T2 et T3 visibles depuis la grille publiée.',
+    display_order: 2,
+    is_published: true
+  }
+];
+
 export async function fetchResidence(): Promise<ResidenceInfo> {
-  const res = await fetch(`${API_BASE}/residence`);
-  const data = await res.json();
-  return data.data;
+  try {
+    const res = await fetch(`${API_BASE}/residence`);
+    if (!res.ok) throw new Error('Residence API unavailable');
+    const data = await res.json();
+    return data.data;
+  } catch {
+    return fallbackResidence;
+  }
 }
 
 export async function fetchApartments(type?: string, status?: string): Promise<Apartment[]> {
@@ -98,30 +257,50 @@ export async function fetchApartments(type?: string, status?: string): Promise<A
   if (type && type !== 'all') params.append('type', type);
   if (status && status !== 'all') params.append('status', status);
 
-  const res = await fetch(`${API_BASE}/apartments?${params.toString()}`);
-  const data = await res.json();
-  return data.data;
+  try {
+    const res = await fetch(`${API_BASE}/apartments?${params.toString()}`);
+    if (!res.ok) throw new Error('Apartments API unavailable');
+    const data = await res.json();
+    return data.data;
+  } catch {
+    return fallbackApartments;
+  }
 }
 
 export async function fetchApartmentById(id: string): Promise<Apartment> {
-  const res = await fetch(`${API_BASE}/apartments/${id}`);
-  const data = await res.json();
-  return data.data;
+  try {
+    const res = await fetch(`${API_BASE}/apartments/${id}`);
+    if (!res.ok) throw new Error('Apartment detail API unavailable');
+    const data = await res.json();
+    return data.data;
+  } catch {
+    return fallbackApartments.find((apt) => apt.id === id) || fallbackApartments[0];
+  }
 }
 
 export async function fetchConstructionMilestones(): Promise<ConstructionMilestone[]> {
-  const res = await fetch(`${API_BASE}/construction`);
-  const data = await res.json();
-  return data.data;
+  try {
+    const res = await fetch(`${API_BASE}/construction`);
+    if (!res.ok) throw new Error('Construction API unavailable');
+    const data = await res.json();
+    return data.data;
+  } catch {
+    return fallbackMilestones;
+  }
 }
 
 export async function fetchFAQs(category?: string): Promise<FAQItem[]> {
   const params = new URLSearchParams();
   if (category && category !== 'all') params.append('category', category);
 
-  const res = await fetch(`${API_BASE}/faq?${params.toString()}`);
-  const data = await res.json();
-  return data.data;
+  try {
+    const res = await fetch(`${API_BASE}/faq?${params.toString()}`);
+    if (!res.ok) throw new Error('FAQ API unavailable');
+    const data = await res.json();
+    return data.data;
+  } catch {
+    return fallbackFaqs;
+  }
 }
 
 export async function calculateSimulation(payload: {
