@@ -100,7 +100,7 @@ const fallbackResidence: ResidenceInfo = {
   floors: 'R+7',
   delivery_date_estimated: '2026',
   status: 'En construction',
-  hero_image: './images/noema_construction_site_1788290376970.jpg',
+  hero_image: './images/photo actuel du chantier.jpeg',
   whatsapp_number: '+2250789001122',
   phone_number: '+2250789001122',
   email_contact: 'contact@noema.ci',
