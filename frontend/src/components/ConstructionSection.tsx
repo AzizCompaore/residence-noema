@@ -98,7 +98,7 @@ export const ConstructionSection: React.FC<ConstructionSectionProps> = ({ milest
           
           <div className="lg:col-span-7 relative rounded-2xl overflow-hidden bg-neutral-900 aspect-16/10 border border-neutral-200 shadow-md group">
             <img
-              src="./images/noema-construction.webp"
+              src="./images/noema_construction_site_1788290376970.jpg"
               alt="Chantier réel de la Résidence NOEMA à Angré Djorogobité Abidjan"
               referrerPolicy="no-referrer"
               loading="lazy"
