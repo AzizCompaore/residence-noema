@@ -1,0 +1,31 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<style>
+  .noema-dashboard { margin-bottom: 28px; }
+  .noema-intro { background: #17352d; border-radius: 8px; color: #fff; padding: 26px; margin-bottom: 18px; }
+  .noema-intro h2 { color: #fff; margin: 0 0 8px; font-size: 22px; }
+  .noema-intro p { color: #c6ead8; margin: 0; max-width: 760px; line-height: 1.55; }
+  .noema-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+  .noema-card { display: block; padding: 18px; border: 1px solid #dce5df; border-radius: 8px; background: #fff; text-decoration: none; }
+  .noema-card:hover { border-color: #176b55; box-shadow: 0 3px 12px rgba(23, 107, 85, .12); }
+  .noema-card strong { display: block; color: #17352d; font-size: 16px; margin-bottom: 6px; }
+  .noema-card span { color: #5d6b64; font-size: 13px; line-height: 1.4; }
+</style>
+
+<div class="noema-dashboard">
+  <div class="noema-intro">
+    <h2>Centre de pilotage NOEMA</h2>
+    <p>Créez et publiez les informations réelles de la résidence. Dès qu'une catégorie contient vos données validées, elles sont utilisées par le site public à la place des données de démonstration.</p>
+  </div>
+  <div class="noema-grid">
+    <a class="noema-card" href="{% url 'admin:residences_residence_changelist' %}"><strong>Résidence</strong><span>Adresse, coordonnées, contacts, livraison, taux de simulation et photo principale.</span></a>
+    <a class="noema-card" href="{% url 'admin:apartments_apartment_changelist' %}"><strong>Appartements</strong><span>Lots, prix, statut commercial, photos, plans et prestations.</span></a>
+    <a class="noema-card" href="{% url 'admin:construction_constructionmilestone_changelist' %}"><strong>Chantier</strong><span>Étapes, pourcentage d'avancement, dates et photos de suivi.</span></a>
+    <a class="noema-card" href="{% url 'admin:faq_faqitem_changelist' %}"><strong>FAQ</strong><span>Questions publiées et réponses commerciales actualisées.</span></a>
+    <a class="noema-card" href="{% url 'admin:leads_lead_changelist' %}"><strong>Prospects CRM</strong><span>Demandes de simulation, statuts du pipeline et suivi commercial.</span></a>
+  </div>
+</div>
+
+{{ block.super }}
+{% endblock %}
