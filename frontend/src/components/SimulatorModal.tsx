@@ -19,6 +19,7 @@ import confetti from 'canvas-confetti';
 import { Apartment, LeadSubmission, SimulationResult } from '../types';
 import { calculateSimulation, submitLead, formatFCFA, formatEUR } from '../services/api';
 import { captureUTMParams, buildWhatsAppURL } from '../utils/utm';
+import { financingConfig } from '../services/financing';
 
 interface SimulatorModalProps {
   isOpen: boolean;
@@ -29,6 +30,26 @@ interface SimulatorModalProps {
   whatsappNumber?: string;
   initialProjectPurpose?: string;
 }
+
+const fallbackApartment: Apartment = {
+  id: 'apt-t2-noema',
+  ref: 'NOEMA-T2-01',
+  name: 'T2 étage courant',
+  type: 't2',
+  rooms_count: 2,
+  bedrooms_count: 1,
+  bathrooms_count: 1,
+  surface_sqm: 54,
+  balcony_surface_sqm: 8,
+  floor: 'Étage courant',
+  price_fcfa: 59000000,
+  status: 'available',
+  description: 'Appartement T2 lumineux, pensé pour un pied-à-terre ou un investissement locatif à Abidjan.',
+  key_features: [],
+  photos: [],
+  display_order: 1,
+  is_featured: true,
+};
 
 const formatAmountWithDots = (value: string): string => {
   const digits = value.replace(/[^\d]/g, '');
@@ -47,14 +68,14 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
   selectedApartment,
   allApartments,
   onSelectApartment,
-  whatsappNumber = '+2250789001122',
+  whatsappNumber = '+377678630862',
   initialProjectPurpose
 }) => {
   const availableApartments = allApartments;
 
   // Active Apartment Context
   const [currentApartment, setCurrentApartment] = useState<Apartment>(
-    selectedApartment || availableApartments[0]
+    selectedApartment || availableApartments[0] || fallbackApartment
   );
 
   // Progressive Step State: 1 to 7, then 8 is Result & Lead Form, 9 is Success
@@ -71,7 +92,7 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
   const [currency, setCurrency] = useState<'EUR' | 'FCFA'>('EUR');
   const [downPaymentEUR, setDownPaymentEUR] = useState<string>('');
   const [existingLoansEUR, setExistingLoansEUR] = useState<string>('');
-  const [durationYears, setDurationYears] = useState<number>(8);
+  const [durationYears, setDurationYears] = useState<number>(financingConfig.durationYears);
   const [projectPurpose, setProjectPurpose] = useState(initialProjectPurpose || 'Je prépare mon retour à Abidjan');
   const [fundsAvailability, setFundsAvailability] = useState('Disponible immédiatement');
 
@@ -136,7 +157,6 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
     setCurrency('EUR');
     setDownPaymentEUR('');
     setExistingLoansEUR('');
-    setDurationYears(8);
     setProjectPurpose('Résidence principale');
     setFundsAvailability('Disponible immédiatement');
     setSimulationResult(null);
@@ -148,12 +168,13 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
     setConsentMarketing(true);
     setLeadSubmitted(false);
     setErrorMessage('');
+    setDurationYears(financingConfig.durationYears);
     if (selectedApartment) {
       setCurrentApartment(selectedApartment);
       setNeedsApartmentSelection(false);
       setStep(1);
     } else {
-      setCurrentApartment(availableApartments[0]);
+      setCurrentApartment(availableApartments[0] || fallbackApartment);
       setNeedsApartmentSelection(true);
       setStep(0);
     }
@@ -190,6 +211,7 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
         setIsCalculating(true);
         const res = await calculateSimulation({
           apartment_id: currentApartment.id,
+          property_type: currentApartment.type,
           apartment_price: priceFCFA,
           down_payment: downPaymentFCFA,
           duration_years: durationYears,
@@ -345,7 +367,7 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
   };
 
   const whatsappMessage = simulationResult 
-    ? `Bonjour, je viens de réaliser une simulation pour l'appartement ${currentApartment.name} (${currentApartment.ref}) à la Résidence NOEMA.\n- Prix: ${formatFCFA(currentApartment.price_fcfa)}\n- Apport: ${formatFCFA(simulationResult.down_payment)}\n- Mensualité estimée: ${formatFCFA(simulationResult.monthly_payment)} / mois\nJe souhaite faire étudier mon dossier par un conseiller.`
+    ? `Bonjour, je viens de réaliser une simulation pour l'appartement ${currentApartment.name} (${currentApartment.ref}) à la Résidence NOEMA.\n- Prix : ${formatFCFA(currentApartment.price_fcfa)}\n- Apport : ${formatFCFA(simulationResult.down_payment)}\n- Mensualité bancaire : ${formatFCFA(simulationResult.monthly_payment)} / mois\n- Cash-flow locatif : ${formatFCFA(simulationResult.rental_cash_flow)} / mois\nJe souhaite faire étudier mon dossier par un conseiller.`
     : `Bonjour, je souhaite faire étudier mon financement pour la Résidence NOEMA.`;
 
   const whatsappUrl = buildWhatsAppURL(whatsappNumber, whatsappMessage);
@@ -378,6 +400,8 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
       ['Durée de remboursement', `${simulationResult.duration_years} ans`],
       ['Taux annuel indicatif', `${simulationResult.interest_rate.toLocaleString('fr-FR')} %`],
       ['Mensualité estimée', `${formatFCFA(simulationResult.monthly_payment)} / mois`],
+      ['Revenu locatif net propriétaire', `${simulationResult.rental_owner_income_eur.toLocaleString('fr-FR')} € / mois`],
+      ['Cash-flow locatif avant autres charges', `${formatFCFA(simulationResult.rental_cash_flow)} / mois`],
       ['CAPACITÉ DE REMBOURSEMENT', ''],
       ['Revenus mensuels retenus', formatFCFA(simulationResult.monthly_income)],
       ['Charges mensuelles déclarées', formatFCFA(simulationResult.existing_loans)],
@@ -441,25 +465,19 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
   const repaidLine = amortizationData.map((item, index) => chartPoint(item.repaidCapital, index)).join(' ');
   const healthyRatioFinancing = simulationResult
     ? (() => {
-        const maximumMonthlyCommitment = simulationResult.monthly_income * 0.35;
-        const maximumMonthlyPayment = maximumMonthlyCommitment - simulationResult.existing_loans;
-        if (maximumMonthlyPayment <= 0) {
-          return { canBorrow: false, additionalDownPayment: 0 };
-        }
-
-        const monthlyRate = simulationResult.interest_rate / 100 / 12;
+        const maximumMonthlyPayment = simulationResult.monthly_income * financingConfig.maxDebtRatio - simulationResult.existing_loans;
+        const monthlyRate = financingConfig.annualInterestRate / 12;
         const totalMonths = simulationResult.duration_years * 12;
-        const loanCapacity = monthlyRate > 0
+        const loanCapacity = maximumMonthlyPayment > 0
           ? maximumMonthlyPayment * ((1 - Math.pow(1 + monthlyRate, -totalMonths)) / monthlyRate)
-          : maximumMonthlyPayment * totalMonths;
+          : 0;
 
         return {
-          canBorrow: true,
+          canBorrow: maximumMonthlyPayment > 0,
           additionalDownPayment: Math.max(0, Math.ceil(simulationResult.loan_amount - loanCapacity))
         };
       })()
     : { canBorrow: false, additionalDownPayment: 0 };
-
   if (!isOpen) return null;
 
   return (
@@ -947,19 +965,18 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
 
                     <input
                       type="range"
-                      min="5"
-                      max="8"
+                      min="1"
+                      max={financingConfig.durationYears}
                       step="1"
                       value={durationYears}
-                      onChange={(e) => setDurationYears(Number(e.target.value))}
+                      onChange={(event) => setDurationYears(Number(event.target.value))}
                       className="w-full accent-neutral-900 h-2 bg-neutral-200 rounded-lg cursor-pointer"
                     />
 
                     <div className="flex justify-between text-xs text-neutral-600 font-medium">
-                      <span>5 ans</span>
-                      <span>6 ans</span>
-                      <span>7 ans</span>
-                      <span>8 ans</span>
+                      <span>1 an</span>
+                      <span>4 ans</span>
+                      <span>{financingConfig.durationYears} ans maximum</span>
                     </div>
                   </div>
                 </div>
@@ -990,6 +1007,26 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
                         <span className="text-[10px] text-neutral-600">≈ {formatEUR(simulationResult.loan_amount)}</span>
                       </div>
 
+                      <div className="bg-white p-3.5 rounded-xl border border-neutral-200 shadow-2xs">
+                        <span className="text-[11px] text-neutral-500 block">Revenu locatif net propriétaire</span>
+                        <span className="text-base sm:text-lg font-bold font-mono text-neutral-900 block mt-0.5">
+                          {formatFCFA(simulationResult.rental_owner_income)} / mois
+                        </span>
+                        <span className="text-[10px] text-neutral-600">
+                          {simulationResult.rental_occupied_days} jours x {simulationResult.rental_daily_rate_eur} € / jour, après 20 % de gestion
+                        </span>
+                      </div>
+
+                      <div className="bg-white p-3.5 rounded-xl border border-neutral-200 shadow-2xs">
+                        <span className="text-[11px] text-neutral-500 block">Cash-flow locatif avant autres charges</span>
+                        <span className="text-base sm:text-lg font-bold font-mono text-neutral-900 block mt-0.5">
+                          {formatFCFA(simulationResult.rental_cash_flow)} / mois
+                        </span>
+                        <span className="text-[10px] text-neutral-600">
+                          Revenu propriétaire : {formatFCFA(simulationResult.rental_owner_income)} - mensualité : {formatFCFA(simulationResult.monthly_payment)}
+                        </span>
+                      </div>
+
                       <div className="bg-white p-3.5 rounded-xl border border-emerald-300 shadow-2xs">
                         <span className="text-[11px] text-emerald-800 font-semibold block">Mensualité estimée</span>
                         <span className="text-base sm:text-lg font-bold font-mono text-emerald-800 block mt-0.5">
@@ -1008,6 +1045,13 @@ export const SimulatorModal: React.FC<SimulatorModalProps> = ({
                         <span className="text-[10px] text-neutral-600">Seuil bancaire ref: 35%</span>
                       </div>
 
+                    </div>
+
+                    <div className="rounded-xl border border-neutral-300 bg-neutral-50 p-4 text-xs leading-relaxed text-neutral-800">
+                      Le calcul inclut automatiquement le revenu locatif minimum prévu par l'hypothèse actuelle : {simulationResult.rental_occupied_days} jours loués par mois,
+                      {` ${simulationResult.rental_daily_rate_eur} € par jour `}pour ce type de lot. La structure conserve 20 % pour la gestion, l'entretien et les honoraires ;
+                      le propriétaire reçoit 80 %. La part retenue pour la solvabilité est de {formatFCFA(simulationResult.rental_recognized_income)} ({Math.round(simulationResult.rental_recognition_rate * 100)} %).
+                      Cette part est analysée séparément et ne réduit jamais la mensualité bancaire complète.
                     </div>
 
                     {!simulationResult.is_debt_ratio_healthy && (
